@@ -82,25 +82,25 @@ The architecture of Gaussian Mixture Models involves the following key steps:
 The mathematical foundation of Gaussian Mixture Models involves several key concepts:
 
 1. Gaussian (Normal) Distribution:
-    - The probability density function of a Gaussian distribution in \(d\)-dimensions is given by:
+    - The probability density function of a Gaussian distribution in $d$-dimensions is given by:
       $p(x|\mu, \Sigma) = \frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}} \exp \left( -\frac{1}{2} (x - \mu)^T \Sigma^{-1} (x - \mu) \right)$
       
 2. Mixture Model:
-    - The probability density function of a mixture of \(K\) Gaussians is given by:
+    - The probability density function of a mixture of $K$ Gaussians is given by:
       $p(x|\lambda) = \sum_{k=1}^{K} \pi_k \cdot p(x|\mu_k, \Sigma_k)$
       where $\(\lambda = (\pi_k, \mu_k, \Sigma_k)\)$ are the parameters of the model.
 
 3. Expectation-Maximization (EM) Algorithm:
-    - E-step: Calculate the responsibility \(\gamma_{ik}\) that component \(k\) takes for data point \(i\):
+    - E-step: Calculate the responsibility $\gamma_{ik}$ that component $k$ takes for data point \(i\):
       $\gamma_{ik} = \frac{\pi_k \cdot p(x_i|\mu_k, \Sigma_k)}{\sum_{j=1}^{K} \pi_j \cdot p(x_i|\mu_j, \Sigma_j)}$
-    - M-step: Update the parameters \(\pi_k\), \(\mu_k\), and \(\Sigma_k\):
+    - M-step: Update the parameters $\pi_k$, $\mu_k$, and $\Sigma_k$:
       $\pi_k = \frac{N_k}{N}$
       $\mu_k = \frac{1}{N_k} \sum_{i=1}^{N} \gamma_{ik} x_i$
       $\Sigma_k = \frac{1}{N_k} \sum_{i=1}^{N} \gamma_{ik} (x_i - \mu_k)(x_i - \mu_k)^T$
       where $\(N_k = \sum_{i=1}^{N} \gamma_{ik}\)$ is the effective number of points assigned to component \(k\).
 
 4. Log-Likelihood:
-    - The log-likelihood of the data given the parameters \(\lambda\) is given by:
+    - The log-likelihood of the data given the parameters $\lambda$ is given by:
       $\log L(\lambda) = \sum_{i=1}^{N} \log \left( \sum_{k=1}^{K} \pi_k \cdot p(x_i|\mu_k, \Sigma_k) \right)$
 
 ## Hidden Markov Models Architecture
@@ -109,15 +109,15 @@ Hidden Markov Models are statistical models that represent systems with unobserv
 
 The architecture of Hidden Markov Models involves the following key components:
 
-1. States: A set of hidden states \(S = \{S_1, S_2, \ldots, S_N\}\) that the system can be in. The states are not directly observable.
+1. States: A set of hidden states $S = \{S_1, S_2, \ldots, S_N\}$ that the system can be in. The states are not directly observable.
 
-2. Observations: A set of observable outputs \(O = \{O_1, O_2, \ldots, O_T\}\) corresponding to the states.
+2. Observations: A set of observable outputs $O = \{O_1, O_2, \ldots, O_T\}$ corresponding to the states.
 
-3. Transition Probabilities: The probabilities of transitioning from one state to another, represented by a matrix \(A\), where \(a_{ij} = P(S_{t+1} = S_j | S_t = S_i)\).
+3. Transition Probabilities: The probabilities of transitioning from one state to another, represented by a matrix $A$, where $a_{ij} = P(S_{t+1} = S_j | S_t = S_i)$.
 
-4. Emission Probabilities: The probabilities of observing a particular output from a state, represented by a matrix \(B\), where \(b_{j}(o_t) = P(O_t = o_t | S_t = S_j)\).
+4. Emission Probabilities: The probabilities of observing a particular output from a state, represented by a matrix $B$, where $b_{j}(o_t) = P(O_t = o_t | S_t = S_j)$.
 
-5. Initial State Probabilities: The probabilities of starting in each state, represented by a vector \(\pi\), where \(\pi_i = P(S_1 = S_i)\).
+5. Initial State Probabilities: The probabilities of starting in each state, represented by a vector $\pi$, where $\pi_i = P(S_1 = S_i)$.
 
 ### Mathematics
 
@@ -130,13 +130,13 @@ The mathematical foundation of Hidden Markov Models involves several key algorit
       $\beta_t(i) = P(O_{t+1}, O_{t+2}, \ldots, O_T | S_t = S_i, \lambda)$
       
 3. Baum-Welch Algorithm (EM Algorithm):
-    - Estimates the model parameters \(\lambda = (A, B, \pi)\) to maximize the likelihood of the observed sequence.
+    - Estimates the model parameters $\lambda = (A, B, \pi)$ to maximize the likelihood of the observed sequence.
     - Expectation Step (E-step):
         - Calculate the forward and backward probabilities.
       $\gamma_t(i) = P(S_t = S_i | O, \lambda)$
       $\xi_t(i, j) = P(S_t = S_i, S_{t+1} = S_j | O, \lambda)$
     - Maximization Step (M-step):
-        - Update the parameters \(A, B, \pi\).
+        - Update the parameters $A, B, \pi$.
       $\pi_i = \gamma_1(i)$
       $a_{ij} = \frac{\sum_{t=1}^{T-1} \xi_t(i, j)}{\sum_{t=1}^{T-1} \gamma_t(i)}$
       $b_j(k) = \frac{\sum_{t=1}^{T} \gamma_t(j) \cdot 1(O_t = k)}{\sum_{t=1}^{T} \gamma_t(j)}$
