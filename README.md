@@ -1,0 +1,1 @@
+# equity_regime_detection
