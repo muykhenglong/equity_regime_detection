@@ -12,7 +12,7 @@ This project aims to detect market regimes using different models and backtest a
 
 ## Requirements
 
-Python 3.8.12
+Python 3.8.19
 
 # Overview
 ## 1. Agglomerative Clustering Architecture
