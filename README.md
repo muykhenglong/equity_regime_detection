@@ -14,8 +14,8 @@ This project aims to detect market regimes using different models and backtest a
 
 Python 3.8.12
 
-# Overciew
-## Agglomerative Clustering Architecture
+# Overview
+## 1. Agglomerative Clustering Architecture
 
 Agglomerative Clustering is a hierarchical clustering method that builds nested clusters in a bottom-up manner. This algorithm is particularly useful for identifying nested groups within data and is widely used in data mining and statistics.
 
@@ -60,7 +60,7 @@ The mathematical foundation of Agglomerative Clustering involves several key con
     - Step 4: Update the distance matrix to reflect the new cluster configuration.
     - Step 5: Repeat steps 3 and 4 until a single cluster remains.
 
-## Gaussian Mixture Models Architecture
+## 2. Gaussian Mixture Models Architecture
 
 Gaussian Mixture Models (GMM) are a probabilistic model for representing normally distributed subpopulations within an overall population. GMMs are widely used in clustering, density estimation, and pattern recognition.
 
@@ -103,7 +103,7 @@ The mathematical foundation of Gaussian Mixture Models involves several key conc
     - The log-likelihood of the data given the parameters $\lambda$ is given by:
       $\log L(\lambda) = \sum_{i=1}^{N} \log \left( \sum_{k=1}^{K} \pi_k \cdot p(x_i|\mu_k, \Sigma_k) \right)$
 
-## Hidden Markov Models Architecture
+## 3. Hidden Markov Models Architecture
 
 Hidden Markov Models are statistical models that represent systems with unobservable (hidden) states. HMMs are widely used in time series analysis, speech recognition, and finance for modeling sequences with underlying hidden states.
 
